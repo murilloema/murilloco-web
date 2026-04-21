@@ -1,0 +1,188 @@
+"use client";
+
+import { useState } from "react";
+import { useForm, ValidationError } from "@formspree/react";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { CheckCircle, Send } from "lucide-react";
+
+type ContactMethod = "llamada" | "correo" | "whatsapp" | "";
+
+export default function ContactForm() {
+  const [state, handleSubmit] = useForm("xnjlprpo");
+  const [contactMethod, setContactMethod] = useState<ContactMethod>("");
+
+  if (state.succeeded) {
+    return (
+      <section id="contacto" className="py-20 md:py-28 bg-primary">
+        <div className="max-w-2xl mx-auto px-4 sm:px-6 text-center">
+          <div className="w-16 h-16 rounded-full bg-white/10 flex items-center justify-center mx-auto mb-6">
+            <CheckCircle className="w-8 h-8 text-white" />
+          </div>
+          <h2
+            className="text-3xl font-bold text-white mb-4"
+            style={{ fontFamily: "var(--font-heading-var)" }}
+          >
+            ¡Solicitud enviada!
+          </h2>
+          <p className="text-white/80 text-lg">
+            Te contactamos en menos de 24 horas para agendar tu demo gratuita.
+          </p>
+        </div>
+      </section>
+    );
+  }
+
+  return (
+    <section id="contacto" className="py-20 md:py-28 bg-primary">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="grid lg:grid-cols-2 gap-16 items-start">
+          {/* Left — copy */}
+          <div>
+            <p className="text-sm font-semibold text-white/60 uppercase tracking-widest mb-3">
+              Demo gratuita
+            </p>
+            <h2
+              className="text-3xl sm:text-4xl font-bold text-white mb-5 leading-tight"
+              style={{ fontFamily: "var(--font-heading-var)" }}
+            >
+              Solicita tu demo gratuita
+            </h2>
+            <p className="text-white/75 text-lg leading-relaxed mb-8">
+              Dejanos tus datos y te contactamos en menos de 24 horas. Sin
+              compromiso — solo una conversación para ver qué tan rápido podés
+              empezar a conseguir más clientes.
+            </p>
+
+            <ul className="space-y-3">
+              {[
+                "Revisamos tu presencia digital actual",
+                "Te mostramos oportunidades concretas",
+                "Sin tecnicismos ni letra chica",
+              ].map((item) => (
+                <li key={item} className="flex items-center gap-3 text-white/80">
+                  <span className="w-5 h-5 rounded-full bg-white/20 flex items-center justify-center shrink-0">
+                    <span className="text-white text-xs">✓</span>
+                  </span>
+                  {item}
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Right — form */}
+          <div className="bg-white rounded-2xl p-8 shadow-2xl">
+            <form onSubmit={handleSubmit} className="space-y-5">
+              <div className="grid sm:grid-cols-2 gap-4">
+                <div className="space-y-1.5">
+                  <Label htmlFor="nombre" className="text-sm font-medium">
+                    Nombre completo
+                  </Label>
+                  <Input
+                    id="nombre"
+                    name="nombre"
+                    type="text"
+                    placeholder="Juan Pérez"
+                    required
+                    className="h-10"
+                  />
+                  <ValidationError field="nombre" errors={state.errors} className="text-xs text-red-500" />
+                </div>
+                <div className="space-y-1.5">
+                  <Label htmlFor="correo" className="text-sm font-medium">
+                    Correo electrónico
+                  </Label>
+                  <Input
+                    id="correo"
+                    name="correo"
+                    type="email"
+                    placeholder="juan@negocio.com"
+                    required
+                    className="h-10"
+                  />
+                  <ValidationError field="correo" errors={state.errors} className="text-xs text-red-500" />
+                </div>
+              </div>
+
+              <div className="grid sm:grid-cols-2 gap-4">
+                <div className="space-y-1.5">
+                  <Label htmlFor="telefono" className="text-sm font-medium">
+                    Número de teléfono
+                  </Label>
+                  <Input
+                    id="telefono"
+                    name="telefono"
+                    type="tel"
+                    placeholder="+506 8888-8888"
+                    required
+                    className="h-10"
+                  />
+                </div>
+                <div className="space-y-1.5">
+                  <Label htmlFor="whatsapp" className="text-sm font-medium">
+                    WhatsApp{" "}
+                    <span className="text-muted-foreground font-normal">
+                      (si es diferente)
+                    </span>
+                  </Label>
+                  <Input
+                    id="whatsapp"
+                    name="whatsapp"
+                    type="tel"
+                    placeholder="+506 7777-7777"
+                    className="h-10"
+                  />
+                </div>
+              </div>
+
+              {/* Contact method */}
+              <div className="space-y-2">
+                <Label className="text-sm font-medium">
+                  ¿Por dónde prefiere que lo contactemos?
+                </Label>
+                <input type="hidden" name="metodo" value={contactMethod} />
+                <div className="grid grid-cols-3 gap-2">
+                  {[
+                    { value: "llamada", label: "📞 Llamada" },
+                    { value: "correo", label: "✉️ Correo" },
+                    { value: "whatsapp", label: "💬 WhatsApp" },
+                  ].map((opt) => (
+                    <button
+                      key={opt.value}
+                      type="button"
+                      onClick={() => setContactMethod(opt.value as ContactMethod)}
+                      className={`py-2.5 px-3 rounded-lg border text-sm font-medium transition-all ${
+                        contactMethod === opt.value
+                          ? "border-primary bg-primary/8 text-primary"
+                          : "border-border text-muted-foreground hover:border-primary/40"
+                      }`}
+                    >
+                      {opt.label}
+                    </button>
+                  ))}
+                </div>
+              </div>
+
+              <ValidationError errors={state.errors} className="text-xs text-red-500" />
+
+              <Button
+                type="submit"
+                disabled={state.submitting}
+                className="w-full gap-2 h-11 text-base"
+              >
+                {state.submitting ? "Enviando..." : "Enviar solicitud"}
+                <Send className="h-4 w-4" />
+              </Button>
+
+              <p className="text-center text-xs text-muted-foreground">
+                Tu información es privada. No enviamos spam.
+              </p>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
