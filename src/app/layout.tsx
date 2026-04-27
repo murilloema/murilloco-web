@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Plus_Jakarta_Sans, DM_Sans } from "next/font/google";
 import "./globals.css";
+import WhatsAppButton from "@/components/WhatsAppButton";
 
 const jakartaSans = Plus_Jakarta_Sans({
   variable: "--font-heading-var",
@@ -27,6 +28,9 @@ export const metadata: Metadata = {
     type: "website",
     locale: "es_CR",
   },
+  verification: {
+    google: "Ln2_riabANdMIH4iPlcM17PLoIDddxqD6jjrkdFc0HI",
+  },
 };
 
 export default function RootLayout({
@@ -40,6 +44,7 @@ export default function RootLayout({
         className={`${jakartaSans.variable} ${dmSans.variable} antialiased`}
       >
         {children}
+        <WhatsAppButton />
       </body>
     </html>
   );

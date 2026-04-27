@@ -59,7 +59,7 @@ export default function Footer() {
           <div className="md:col-span-1">
             <div className="bg-white inline-block rounded-lg px-3 py-2 mb-4">
               <Image
-                src="/images/logo-v2.png"
+                src="/images/logo.png"
                 alt="Murillo Co"
                 width={150}
                 height={40}

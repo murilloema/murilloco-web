@@ -35,7 +35,7 @@ export default function Navbar() {
         {/* Logo */}
         <Link href="/" className="flex items-center shrink-0">
           <Image
-            src="/images/logo-v2.png"
+            src="/images/logo.png"
             alt="Murillo Co"
             width={180}
             height={48}
@@ -81,7 +81,7 @@ export default function Navbar() {
             <div className="flex flex-col h-full pt-8">
               <Link href="/" onClick={() => setOpen(false)} className="mb-8">
                 <Image
-                  src="/images/logo-v2.png"
+                  src="/images/logo.png"
                   alt="Murillo Co"
                   width={160}
                   height={44}
