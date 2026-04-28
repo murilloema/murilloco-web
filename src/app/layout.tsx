@@ -18,6 +18,7 @@ const dmSans = DM_Sans({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://murilloco.cr"),
   title: "Murillo Co | Páginas web que generan clientes",
   description:
     "Agencia digital en Alajuela, Costa Rica. Creamos páginas web profesionales, optimizamos tu Google Business y posicionamos tu negocio en Google para que consigas más clientes.",
@@ -25,6 +26,7 @@ export const metadata: Metadata = {
     title: "Murillo Co | Páginas web que generan clientes",
     description:
       "Consigue más llamadas, mensajes y clientes con una presencia digital profesional. Especialistas en negocios locales de Alajuela, Costa Rica.",
+    url: "https://murilloco.cr/",
     type: "website",
     locale: "es_CR",
   },
