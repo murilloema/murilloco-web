@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import { motion } from "framer-motion";
 import { Card, CardContent } from "@/components/ui/card";
 
@@ -12,6 +13,7 @@ const services = [
     description:
       "Tu página trabaja por ti las 24 horas. Viene equipada con todo lo que importa para conseguir más clientes — diseño profesional, rápida y lista desde el primer día.",
     detail: "Incluye diseño, desarrollo y puesta en marcha completa.",
+    href: "/servicios/paginas-web",
   },
   {
     image: "/images/service-google.jpg",
@@ -20,6 +22,7 @@ const services = [
     description:
       "Cuando alguien busca un negocio como el tuyo en Google, tu perfil aparece primero. Más visibilidad, más llamadas directas.",
     detail: "Fotos, reseñas, horarios y categorías optimizadas.",
+    href: "/servicios/google-business",
   },
   {
     image: "/images/service-seo.jpg",
@@ -28,6 +31,7 @@ const services = [
     description:
       "Aparecer en Google no es suerte. Te posicionamos para que los clientes de tu zona te encuentren antes que a la competencia.",
     detail: "SEO local enfocado en Costa Rica.",
+    href: "/servicios/seo",
   },
 ];
 
@@ -56,8 +60,8 @@ export default function Services() {
         {/* Cards */}
         <div className="grid md:grid-cols-3 gap-6">
           {services.map((service, index) => (
+            <Link key={index} href={service.href} className="h-full block">
             <motion.div
-              key={index}
               whileHover={{ y: -6, scale: 1.02 }}
               transition={{ duration: 0.25, ease: "easeOut" }}
               className="h-full"
@@ -93,6 +97,7 @@ export default function Services() {
                 </CardContent>
               </Card>
             </motion.div>
+            </Link>
           ))}
         </div>
       </div>
