@@ -100,13 +100,12 @@ export default function SeoPage() {
                 </ul>
               </div>
               <div className="bg-white/10 border border-white/15 rounded-2xl p-8">
-                <p className="text-white/60 text-sm uppercase tracking-widest font-semibold mb-2">
-                  Precio
+                <p className="text-white/60 text-sm uppercase tracking-widest font-semibold mb-4">
+                  ¿Cuánto cuesta?
                 </p>
-                <p className="text-white text-5xl font-extrabold mb-2" style={{ fontFamily: "var(--font-heading-var)" }}>
-                  Desde $200
+                <p className="text-white/80 text-lg leading-relaxed mb-6">
+                  El precio depende del proyecto. Agendá una demo gratuita y te damos un presupuesto personalizado sin compromiso.
                 </p>
-                <p className="text-white/60 text-sm mb-6">Mensual · resultados continuos</p>
                 <a
                   href="/#contacto"
                   className="inline-flex items-center gap-2 px-5 py-3 bg-white text-primary font-semibold rounded-lg text-sm hover:opacity-90 transition-all"
