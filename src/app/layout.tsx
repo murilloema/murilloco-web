@@ -19,11 +19,11 @@ const dmSans = DM_Sans({
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://murilloco.cr"),
-  title: "Murillo Co | Páginas web que generan clientes",
+  title: "Agencia Web en Costa Rica | Murillo Co",
   description:
     "Agencia digital en Alajuela, Costa Rica. Creamos páginas web profesionales, optimizamos tu Google Business y posicionamos tu negocio en Google para que consigas más clientes.",
   openGraph: {
-    title: "Murillo Co | Páginas web que generan clientes",
+    title: "Agencia Web en Costa Rica | Murillo Co",
     description:
       "Consigue más llamadas, mensajes y clientes con una presencia digital profesional. Especialistas en negocios locales de Alajuela, Costa Rica.",
     url: "https://murilloco.cr/",
