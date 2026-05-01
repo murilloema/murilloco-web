@@ -35,16 +35,16 @@ const faqs = [
 
 export default function FAQ() {
   return (
-    <section className="py-20 md:py-28 bg-background">
+    <section className="py-24 md:py-32 bg-white">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid lg:grid-cols-2 gap-16">
+        <div className="grid lg:grid-cols-2 gap-16 lg:gap-24">
           {/* Left */}
           <div>
-            <p className="text-sm font-semibold text-primary uppercase tracking-widest mb-3">
+            <p className="text-sm font-semibold text-primary uppercase tracking-widest mb-4">
               FAQ
             </p>
             <h2
-              className="text-3xl sm:text-4xl font-bold text-foreground mb-6 leading-tight"
+              className="text-3xl sm:text-5xl font-bold text-foreground mb-6 leading-[1.1]"
               style={{ fontFamily: "var(--font-heading-var)" }}
             >
               Preguntas frecuentes
@@ -57,20 +57,20 @@ export default function FAQ() {
 
           {/* Right — Accordion */}
           <div>
-            <Accordion className="space-y-1">
+            <Accordion className="space-y-2">
               {faqs.map((faq, index) => (
                 <AccordionItem
                   key={index}
                   value={`item-${index}`}
-                  className="border border-border rounded-lg px-4 mb-2 data-[state=open]:border-primary/30"
+                  className="border border-border rounded-xl px-5 mb-2 data-[state=open]:border-primary/30 data-[state=open]:bg-primary/3 transition-colors duration-200"
                 >
                   <AccordionTrigger
-                    className="text-left font-semibold text-foreground hover:no-underline py-4 text-sm"
+                    className="text-left font-semibold text-foreground hover:no-underline py-5 text-sm"
                     style={{ fontFamily: "var(--font-heading-var)" }}
                   >
                     {faq.question}
                   </AccordionTrigger>
-                  <AccordionContent className="text-muted-foreground leading-relaxed pb-4 text-sm">
+                  <AccordionContent className="text-muted-foreground leading-relaxed pb-5 text-sm">
                     {faq.answer}
                   </AccordionContent>
                 </AccordionItem>
@@ -82,4 +82,3 @@ export default function FAQ() {
     </section>
   );
 }
-
