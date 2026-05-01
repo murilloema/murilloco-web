@@ -3,7 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { Card, CardContent } from "@/components/ui/card";
+import { ArrowRight } from "lucide-react";
 
 const services = [
   {
@@ -37,66 +37,53 @@ const services = [
 
 export default function Services() {
   return (
-    <section id="servicios" className="py-20 md:py-28 bg-primary">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Header */}
-        <div className="max-w-2xl mb-14">
-          <p className="text-sm font-semibold text-white/50 uppercase tracking-widest mb-3">
-            Servicios
-          </p>
-          <h2
-            className="text-3xl sm:text-4xl font-bold text-white mb-4 leading-tight"
-            style={{ fontFamily: "var(--font-heading-var)" }}
-          >
-            Tres servicios. Un objetivo:{" "}
-            <span className="text-white/70">más clientes.</span>
+    <section id="servicios" className="py-24 md:py-32 bg-[#080D1A] relative overflow-hidden">
+      <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[700px] h-[300px] bg-blue-800/15 rounded-full blur-[100px] pointer-events-none" />
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+        <div className="max-w-2xl mb-16">
+          <p className="text-sm font-semibold text-blue-400 uppercase tracking-widest mb-4">Servicios</p>
+          <h2 className="text-3xl sm:text-5xl font-bold text-white mb-5 leading-[1.1]" style={{ fontFamily: "var(--font-heading-var)" }}>
+            Tres servicios.{" "}
+            <span className="text-white/45">Un objetivo: más clientes.</span>
           </h2>
-          <p className="text-white/65 text-lg leading-relaxed">
-            Todo lo que tu negocio necesita para aparecer, destacar y vender en
-            internet.
+          <p className="text-white/50 text-lg leading-relaxed">
+            Todo lo que tu negocio necesita para aparecer, destacar y vender en internet.
           </p>
         </div>
-
-        {/* Cards */}
-        <div className="grid md:grid-cols-3 gap-6">
+        <div className="grid md:grid-cols-3 gap-5">
           {services.map((service, index) => (
-            <Link key={index} href={service.href} className="h-full block">
-            <motion.div
-              whileHover={{ y: -6, scale: 1.02 }}
-              transition={{ duration: 0.25, ease: "easeOut" }}
-              className="h-full"
-            >
-              <Card className="border border-white/15 bg-white/10 backdrop-blur-sm h-full hover:bg-white/15 transition-colors duration-300 overflow-hidden">
-                {/* Image */}
-                <div className="relative w-full h-48 overflow-hidden">
-                  <Image
-                    src={service.image}
-                    alt={service.imageAlt}
-                    fill
-                    className="object-cover transition-transform duration-500 group-hover:scale-105"
-                    sizes="(max-width: 768px) 100vw, 33vw"
-                  />
-                  {/* Overlay for readability */}
-                  <div className="absolute inset-0 bg-primary/20" />
+            <Link key={index} href={service.href} className="h-full block group">
+              <motion.div
+                initial={{ opacity: 0, y: 24 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-60px" }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+                whileHover={{ y: -8 }}
+                className="h-full"
+              >
+                <div className="h-full bg-white/5 border border-white/10 group-hover:border-blue-500/40 group-hover:bg-white/8 rounded-2xl overflow-hidden transition-all duration-300 flex flex-col">
+                  <div className="relative w-full h-48 overflow-hidden shrink-0">
+                    <Image
+                      src={service.image}
+                      alt={service.imageAlt}
+                      fill
+                      className="object-cover transition-transform duration-500 group-hover:scale-105"
+                      sizes="(max-width: 768px) 100vw, 33vw"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#080D1A]/60 to-transparent" />
+                  </div>
+                  <div className="p-6 flex flex-col flex-1">
+                    <h3 className="text-base font-bold text-white mb-3" style={{ fontFamily: "var(--font-heading-var)" }}>
+                      {service.title}
+                    </h3>
+                    <p className="text-white/55 leading-relaxed text-sm mb-5 flex-1">{service.description}</p>
+                    <div className="flex items-center justify-between pt-4 border-t border-white/10">
+                      <p className="text-xs text-white/35 font-medium">{service.detail}</p>
+                      <ArrowRight className="w-4 h-4 text-blue-400 opacity-0 group-hover:opacity-100 transition-opacity duration-200 shrink-0" />
+                    </div>
+                  </div>
                 </div>
-
-                {/* Text */}
-                <CardContent className="p-6 flex flex-col">
-                  <h3
-                    className="text-lg font-bold text-white mb-2"
-                    style={{ fontFamily: "var(--font-heading-var)" }}
-                  >
-                    {service.title}
-                  </h3>
-                  <p className="text-white/65 leading-relaxed text-sm mb-4 flex-1">
-                    {service.description}
-                  </p>
-                  <p className="text-xs text-white/40 font-medium border-t border-white/10 pt-4">
-                    {service.detail}
-                  </p>
-                </CardContent>
-              </Card>
-            </motion.div>
+              </motion.div>
             </Link>
           ))}
         </div>
@@ -104,4 +91,3 @@ export default function Services() {
     </section>
   );
 }
-
