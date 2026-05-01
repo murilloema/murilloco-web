@@ -34,29 +34,16 @@ export default function Navbar() {
       <nav className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
         {/* Logo */}
         <Link href="/" className="flex items-center shrink-0">
-          {scrolled ? (
-            <Image
-              src="/images/logo.png"
-              alt="Murillo Co"
-              width={180}
-              height={48}
-              className="h-14 w-auto object-contain"
-              priority
-            />
-          ) : (
-            <Image
-              src="/images/logo-white.png"
-              alt="Murillo Co"
-              width={180}
-              height={48}
-              className="h-14 w-auto object-contain"
-              priority
-              onError={(e) => {
-                // fallback to regular logo if white version doesn't exist
-                (e.currentTarget as HTMLImageElement).src = "/images/logo.png";
-              }}
-            />
-          )}
+          <Image
+            src="/images/logo.png"
+            alt="Murillo Co"
+            width={180}
+            height={48}
+            className={`h-14 w-auto object-contain transition-all duration-300 ${
+              !scrolled ? "brightness-0 invert" : ""
+            }`}
+            priority
+          />
         </Link>
 
         {/* Desktop nav */}
