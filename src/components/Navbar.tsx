@@ -18,7 +18,7 @@ export default function Navbar() {
   const [open, setOpen] = useState(false);
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 40);
+    const onScroll = () => setScrolled(window.scrollY > 20);
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
@@ -39,9 +39,7 @@ export default function Navbar() {
             alt="Murillo Co"
             width={180}
             height={48}
-            className={`h-14 w-auto object-contain transition-all duration-300 ${
-              !scrolled ? "brightness-0 invert" : ""
-            }`}
+            className="h-14 w-auto object-contain"
             priority
           />
         </Link>
@@ -52,11 +50,7 @@ export default function Navbar() {
             <li key={link.href}>
               <Link
                 href={link.href}
-                className={`text-sm font-medium transition-colors ${
-                  scrolled
-                    ? "text-foreground/70 hover:text-primary"
-                    : "text-white/70 hover:text-white"
-                }`}
+                className="text-sm font-medium text-foreground/70 hover:text-primary transition-colors"
               >
                 {link.label}
               </Link>
@@ -68,11 +62,7 @@ export default function Navbar() {
         <div className="hidden md:block">
           <a
             href="#contacto"
-            className={`inline-flex items-center justify-center px-5 py-2.5 text-sm font-semibold rounded-xl hover:scale-105 active:scale-95 transition-all duration-200 ${
-              scrolled
-                ? "bg-primary text-white hover:opacity-90 hover:shadow-md"
-                : "bg-blue-600 text-white hover:bg-blue-500 shadow-lg shadow-blue-600/30"
-            }`}
+            className="inline-flex items-center justify-center px-4 py-2 bg-primary text-white text-sm font-semibold rounded-lg hover:opacity-90 hover:scale-105 hover:shadow-md active:scale-95 transition-all duration-200"
           >
             Solicitar demo
           </a>
@@ -83,7 +73,7 @@ export default function Navbar() {
           <SheetTrigger
             render={<button />}
             aria-label="Abrir menú"
-            className={`md:hidden p-2 ${scrolled ? "text-foreground" : "text-white"}`}
+            className="md:hidden p-2 text-foreground"
           >
             <Menu className="h-5 w-5" />
           </SheetTrigger>
@@ -114,7 +104,7 @@ export default function Navbar() {
                 <a
                   href="#contacto"
                   onClick={() => setOpen(false)}
-                  className="inline-flex w-full items-center justify-center px-4 py-3 bg-primary text-white font-semibold rounded-xl hover:opacity-90 active:scale-95 transition-all duration-200"
+                  className="inline-flex w-full items-center justify-center px-4 py-3 bg-primary text-white font-semibold rounded-lg hover:opacity-90 active:scale-95 transition-all duration-200"
                 >
                   Solicitar demo gratuita
                 </a>
@@ -126,3 +116,4 @@ export default function Navbar() {
     </header>
   );
 }
+
