@@ -33,7 +33,17 @@ const services = [
     detail: "SEO local enfocado en Costa Rica.",
     href: "/servicios/seo",
   },
+  {
+    image: "/images/service-fidelizacion.png",
+    imageAlt: "Tarjeta de fidelización digital con sellos acumulados",
+    title: "Fidelización Digital",
+    description:
+      "Tus clientes acumulan sellos con cada visita y reciben su recompensa automáticamente — directo en su iPhone o Android, sin apps ni tarjetas de papel.",
+    detail: "Compatible con Apple Wallet y Google Wallet.",
+    href: "/servicios/fidelizacion",
+  },
 ];
+
 
 export default function Services() {
   return (
@@ -43,14 +53,14 @@ export default function Services() {
         <div className="max-w-2xl mb-16">
           <p className="text-sm font-semibold text-blue-400 uppercase tracking-widest mb-4">Servicios</p>
           <h2 className="text-3xl sm:text-5xl font-bold text-white mb-5 leading-[1.1]" style={{ fontFamily: "var(--font-heading-var)" }}>
-            Tres servicios.{" "}
+            Cuatro servicios.{" "}
             <span className="text-white/45">Un objetivo: más clientes.</span>
           </h2>
           <p className="text-white/50 text-lg leading-relaxed">
             Todo lo que tu negocio necesita para aparecer, destacar y vender en internet.
           </p>
         </div>
-        <div className="grid md:grid-cols-3 gap-5">
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-5">
           {services.map((service, index) => (
             <Link key={index} href={service.href} className="h-full block group">
               <motion.div
@@ -68,7 +78,7 @@ export default function Services() {
                       alt={service.imageAlt}
                       fill
                       className="object-cover transition-transform duration-500 group-hover:scale-105"
-                      sizes="(max-width: 768px) 100vw, 33vw"
+                      sizes="(max-width: 768px) 100vw, 25vw"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-[#080D1A]/60 to-transparent" />
                   </div>
