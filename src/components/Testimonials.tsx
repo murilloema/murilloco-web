@@ -1,6 +1,3 @@
-"use client";
-
-import { motion } from "framer-motion";
 import { Star } from "lucide-react";
 
 const testimonials = [
@@ -40,7 +37,7 @@ function Stars() {
 export default function Testimonials() {
   return (
     <section id="testimonios" className="py-24 md:py-32 bg-[#080D1A] relative overflow-hidden">
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[400px] bg-blue-800/15 rounded-full blur-[120px] pointer-events-none" />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[400px] bg-blue-800/15 rounded-full blur-[120px] pointer-events-none hidden sm:block" />
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative">
         <div className="text-center max-w-xl mx-auto mb-16">
           <p className="text-sm font-semibold text-blue-400 uppercase tracking-widest mb-3">Testimonios</p>
@@ -53,30 +50,24 @@ export default function Testimonials() {
         </div>
         <div className="grid md:grid-cols-3 gap-6">
           {testimonials.map((t, index) => (
-            <motion.div
+            <div
               key={index}
-              initial={{ opacity: 0, y: 24 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-60px" }}
-              transition={{ duration: 0.5, delay: index * 0.1, ease: "easeOut" }}
-              whileHover={{ y: -6 }}
+              className="h-full bg-white/5 border border-white/10 hover:border-blue-500/30 hover:bg-white/8 hover:-translate-y-1.5 rounded-2xl p-8 flex flex-col transition-all duration-300"
             >
-              <div className="h-full bg-white/5 border border-white/10 hover:border-blue-500/30 hover:bg-white/8 rounded-2xl p-8 flex flex-col transition-all duration-300">
-                <div className="text-blue-500/30 text-6xl font-serif leading-none mb-2 select-none">&ldquo;</div>
-                <Stars />
-                <blockquote className="text-white/70 leading-relaxed flex-1 mb-8 text-[0.95rem]">{t.quote}</blockquote>
-                <div className="flex items-center gap-3 pt-6 border-t border-white/10">
-                  <div className="w-10 h-10 rounded-full bg-blue-600/30 border border-blue-500/30 flex items-center justify-center shrink-0">
-                    <span className="text-blue-300 text-sm font-bold">{t.initials}</span>
-                  </div>
-                  <div>
-                    <p className="text-sm font-semibold text-white">{t.name}</p>
-                    <p className="text-xs text-white/50">{t.role}</p>
-                    <p className="text-xs text-white/30">{t.location}</p>
-                  </div>
+              <div className="text-blue-500/30 text-6xl font-serif leading-none mb-2 select-none">&ldquo;</div>
+              <Stars />
+              <blockquote className="text-white/70 leading-relaxed flex-1 mb-8 text-[0.95rem]">{t.quote}</blockquote>
+              <div className="flex items-center gap-3 pt-6 border-t border-white/10">
+                <div className="w-10 h-10 rounded-full bg-blue-600/30 border border-blue-500/30 flex items-center justify-center shrink-0">
+                  <span className="text-blue-300 text-sm font-bold">{t.initials}</span>
+                </div>
+                <div>
+                  <p className="text-sm font-semibold text-white">{t.name}</p>
+                  <p className="text-xs text-white/50">{t.role}</p>
+                  <p className="text-xs text-white/30">{t.location}</p>
                 </div>
               </div>
-            </motion.div>
+            </div>
           ))}
         </div>
       </div>

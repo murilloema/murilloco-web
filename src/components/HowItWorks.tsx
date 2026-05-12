@@ -1,6 +1,3 @@
-"use client";
-
-import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 
 const steps = [
@@ -44,12 +41,8 @@ export default function HowItWorks() {
           </div>
           <div className="space-y-0">
             {steps.map((step, index) => (
-              <motion.div
+              <div
                 key={index}
-                initial={{ opacity: 0, x: 24 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true, margin: "-60px" }}
-                transition={{ duration: 0.45, delay: index * 0.12, ease: "easeOut" }}
                 className="flex gap-6 group"
               >
                 <div className="flex flex-col items-center">
@@ -66,7 +59,7 @@ export default function HowItWorks() {
                   </h3>
                   <p className="text-muted-foreground leading-relaxed text-sm">{step.description}</p>
                 </div>
-              </motion.div>
+              </div>
             ))}
           </div>
         </div>
