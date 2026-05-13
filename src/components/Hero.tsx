@@ -63,7 +63,7 @@ export default function Hero() {
             {/* Stats — flex-wrap to avoid overflow on small screens */}
             <div className="mt-12 pt-10 border-t border-white/10 flex flex-wrap gap-8">
               {[
-                { value: "3", label: "Servicios clave" },
+                { value: "4", label: "Servicios clave" },
                 { value: "100%", label: "Clientes satisfechos" },
                 { value: "24h", label: "Tiempo de respuesta" },
               ].map((stat) => (
