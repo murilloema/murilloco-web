@@ -55,7 +55,7 @@ export default function Hero() {
             </span>
           </h1>
 
-          <p className="text-lg text-white/55 leading-relaxed mb-10 max-w-lg">
+          <p className="text-lg text-white/85 leading-relaxed mb-10 max-w-lg">
             Hacemos páginas web que venden, optimizamos tu Google Business y
             te ponemos donde tus clientes te están buscando. Trabajamos con
             negocios en todo Costa Rica.
