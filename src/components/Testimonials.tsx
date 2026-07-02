@@ -1,4 +1,8 @@
-import { Star } from "lucide-react";
+"use client";
+
+import { useState, useRef } from "react";
+import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 
 const testimonials = [
   {
@@ -6,69 +10,113 @@ const testimonials = [
     name: "Carlos Mora",
     role: "Ferretería Mora",
     location: "Alajuela Centro",
-    initials: "CM",
   },
   {
     quote: "Aparezco primero en Google cuando alguien busca electricista en Alajuela. Mis llamadas se duplicaron en dos meses.",
     name: "Andrés Vargas",
     role: "Servicios Eléctricos Vargas",
     location: "San José, Alajuela",
-    initials: "AV",
   },
   {
     quote: "Pensé que tener una página era complicado y caro. Con ellos fue lo contrario: rápido, claro y con resultados reales.",
     name: "Mariela Quesada",
     role: "Salón de Belleza Mariela Q.",
     location: "La Guácima, Alajuela",
-    initials: "MQ",
   },
 ];
 
-function Stars() {
-  return (
-    <div className="flex gap-0.5 mb-5">
-      {Array.from({ length: 5 }).map((_, i) => (
-        <Star key={i} className="w-4 h-4 fill-amber-400 text-amber-400" />
-      ))}
-    </div>
-  );
-}
-
 export default function Testimonials() {
+  const reduced = useReducedMotion();
+  const [index, setIndex] = useState(0);
+  const [direction, setDirection] = useState(0);
+  const touchStartX = useRef<number | null>(null);
+
+  const go = (dir: number) => {
+    setDirection(dir);
+    setIndex((prev) => (prev + dir + testimonials.length) % testimonials.length);
+  };
+
+  const onTouchStart = (e: React.TouchEvent) => { touchStartX.current = e.touches[0].clientX; };
+  const onTouchEnd = (e: React.TouchEvent) => {
+    if (touchStartX.current === null) return;
+    const delta = e.changedTouches[0].clientX - touchStartX.current;
+    if (Math.abs(delta) > 40) go(delta < 0 ? 1 : -1);
+    touchStartX.current = null;
+  };
+
+  const t = testimonials[index];
+
   return (
-    <section id="testimonios" className="py-24 md:py-32 bg-[#080D1A] relative overflow-hidden">
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[400px] bg-blue-800/15 rounded-full blur-[120px] pointer-events-none hidden sm:block" />
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative">
-        <div className="text-center max-w-xl mx-auto mb-16">
-          <p className="text-sm font-semibold text-blue-400 uppercase tracking-widest mb-3">Testimonios</p>
-          <h2 className="text-3xl sm:text-4xl font-bold text-white mb-4 leading-tight" style={{ fontFamily: "var(--font-heading-var)" }}>
-            Lo que dicen nuestros clientes
-          </h2>
-          <p className="text-white/50 text-lg">
-            Negocios locales como el tuyo, que hoy consiguen más clientes en línea.
-          </p>
+    <section id="testimonios" className="py-24 md:py-32 bg-[#080D1A] border-t border-white/5">
+      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 mb-16">
+          <div>
+            <p className="text-sm font-semibold text-blue-400 uppercase tracking-widest mb-3">Testimonios</p>
+            <h2 className="text-3xl sm:text-4xl font-bold text-white leading-tight" style={{ fontFamily: "var(--font-heading-var)" }}>
+              Lo que dicen nuestros clientes
+            </h2>
+          </div>
+          <p className="text-white/40 text-sm">5.0 promedio en reseñas de Google</p>
         </div>
-        <div className="grid md:grid-cols-3 gap-6">
-          {testimonials.map((t, index) => (
-            <div
+
+        <div className="relative" onTouchStart={onTouchStart} onTouchEnd={onTouchEnd}>
+          <span className="block text-blue-500/25 text-7xl sm:text-8xl font-serif leading-none select-none mb-2" aria-hidden>&ldquo;</span>
+
+          <AnimatePresence mode="wait" custom={direction} initial={false}>
+            <motion.div
               key={index}
-              className="h-full bg-white/5 border border-white/10 hover:border-blue-500/30 hover:bg-white/8 hover:-translate-y-1.5 rounded-2xl p-8 flex flex-col transition-all duration-300"
+              custom={direction}
+              initial={reduced ? {} : { opacity: 0, x: direction >= 0 ? 40 : -40 }}
+              animate={{ opacity: 1, x: 0 }}
+              exit={reduced ? {} : { opacity: 0, x: direction >= 0 ? -40 : 40 }}
+              transition={{ duration: 0.4, ease: "easeOut" as const }}
             >
-              <div className="text-blue-500/30 text-6xl font-serif leading-none mb-2 select-none">&ldquo;</div>
-              <Stars />
-              <blockquote className="text-white/70 leading-relaxed flex-1 mb-8 text-[0.95rem]">{t.quote}</blockquote>
-              <div className="flex items-center gap-3 pt-6 border-t border-white/10">
-                <div className="w-10 h-10 rounded-full bg-blue-600/30 border border-blue-500/30 flex items-center justify-center shrink-0">
-                  <span className="text-blue-300 text-sm font-bold">{t.initials}</span>
-                </div>
+              <blockquote
+                className="text-xl sm:text-2xl lg:text-[1.75rem] text-white/90 leading-snug font-medium max-w-2xl"
+                style={{ fontFamily: "var(--font-heading-var)" }}
+              >
+                {t.quote}
+              </blockquote>
+              <div className="mt-8 flex items-center gap-3">
+                <span className="w-8 h-px bg-blue-500 shrink-0" />
                 <div>
                   <p className="text-sm font-semibold text-white">{t.name}</p>
-                  <p className="text-xs text-white/50">{t.role}</p>
-                  <p className="text-xs text-white/30">{t.location}</p>
+                  <p className="text-xs text-white/40">{t.role} · {t.location}</p>
                 </div>
               </div>
-            </div>
-          ))}
+            </motion.div>
+          </AnimatePresence>
+        </div>
+
+        <div className="flex items-center gap-6 mt-14">
+          <button
+            onClick={() => go(-1)}
+            aria-label="Testimonio anterior"
+            className="w-10 h-10 rounded-full border border-white/15 flex items-center justify-center text-white hover:border-blue-500/50 transition-colors"
+          >
+            <ChevronLeft size={18} />
+          </button>
+
+          <div className="flex gap-2" role="tablist" aria-label="Seleccionar testimonio">
+            {testimonials.map((testimonial, i) => (
+              <button
+                key={testimonial.name}
+                role="tab"
+                aria-selected={i === index}
+                aria-label={`Testimonio de ${testimonial.name}`}
+                onClick={() => { setDirection(i > index ? 1 : -1); setIndex(i); }}
+                className={`h-1.5 rounded-full transition-all duration-300 ${i === index ? "w-6 bg-blue-500" : "w-1.5 bg-white/20"}`}
+              />
+            ))}
+          </div>
+
+          <button
+            onClick={() => go(1)}
+            aria-label="Siguiente testimonio"
+            className="w-10 h-10 rounded-full border border-white/15 flex items-center justify-center text-white hover:border-blue-500/50 transition-colors"
+          >
+            <ChevronRight size={18} />
+          </button>
         </div>
       </div>
     </section>

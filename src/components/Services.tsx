@@ -42,10 +42,11 @@ const services = [
 ];
 
 export default function Services() {
+  const [featured, ...rest] = services;
+
   return (
-    <section id="servicios" className="py-24 md:py-32 bg-[#080D1A] relative overflow-hidden">
-      <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[700px] h-[300px] bg-blue-800/15 rounded-full blur-[100px] pointer-events-none hidden sm:block" />
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+    <section id="servicios" className="py-24 md:py-32 bg-[#080D1A] border-t border-white/5">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="max-w-2xl mb-16">
           <p className="text-sm font-semibold text-blue-400 uppercase tracking-widest mb-4">Servicios</p>
           <h2 className="text-3xl sm:text-5xl font-bold text-white mb-5 leading-[1.1]" style={{ fontFamily: "var(--font-heading-var)" }}>
@@ -56,33 +57,47 @@ export default function Services() {
             Todo lo que tu negocio necesita para aparecer, destacar y vender en internet.
           </p>
         </div>
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-5">
-          {services.map((service, index) => (
-            <Link key={index} href={service.href} className="h-full block group">
-              <div className="h-full bg-white/5 border border-white/10 group-hover:border-blue-500/40 group-hover:bg-white/8 rounded-2xl overflow-hidden transition-all duration-300 flex flex-col group-hover:-translate-y-2">
-                <div className="relative w-full h-48 overflow-hidden shrink-0">
-                  <Image
-                    src={service.image}
-                    alt={service.imageAlt}
-                    fill
-                    className="object-cover transition-transform duration-500 group-hover:scale-105"
-                    sizes="(max-width: 768px) 100vw, 25vw"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#080D1A]/60 to-transparent" />
+
+        <div className="grid lg:grid-cols-5 gap-8 lg:gap-6 items-stretch">
+          {/* Servicio destacado */}
+          <Link href={featured.href} className="lg:col-span-3 group relative rounded-2xl overflow-hidden block h-[380px] lg:h-[560px]">
+            <Image
+              src={featured.image}
+              alt={featured.imageAlt}
+              fill
+              className="object-cover transition-transform duration-500 group-hover:scale-105"
+              sizes="(max-width: 1024px) 100vw, 60vw"
+              priority
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-[#080D1A] via-[#080D1A]/50 to-transparent" />
+            <div className="absolute inset-x-0 bottom-0 p-7 sm:p-9">
+              <h3 className="text-2xl sm:text-3xl font-bold text-white mb-3" style={{ fontFamily: "var(--font-heading-var)" }}>
+                {featured.title}
+              </h3>
+              <p className="text-white/70 leading-relaxed mb-5 max-w-md text-[0.95rem]">{featured.description}</p>
+              <span className="inline-flex items-center gap-2 text-sm font-semibold text-blue-400 group-hover:gap-3 transition-all duration-200">
+                {featured.detail}
+                <ArrowRight className="w-4 h-4" />
+              </span>
+            </div>
+          </Link>
+
+          {/* Resto de servicios — lista compacta */}
+          <div className="lg:col-span-2 flex flex-col divide-y divide-white/10 border-y border-white/10">
+            {rest.map((service) => (
+              <Link key={service.href} href={service.href} className="group flex items-center gap-4 py-6">
+                <div className="relative w-16 h-16 rounded-xl overflow-hidden shrink-0">
+                  <Image src={service.image} alt={service.imageAlt} fill className="object-cover" sizes="64px" />
                 </div>
-                <div className="p-6 flex flex-col flex-1">
-                  <h3 className="text-base font-bold text-white mb-3" style={{ fontFamily: "var(--font-heading-var)" }}>
+                <div className="flex-1 min-w-0">
+                  <h3 className="text-base font-bold text-white mb-1 group-hover:text-blue-400 transition-colors duration-200" style={{ fontFamily: "var(--font-heading-var)" }}>
                     {service.title}
                   </h3>
-                  <p className="text-white/55 leading-relaxed text-sm mb-5 flex-1">{service.description}</p>
-                  <div className="flex items-center justify-between pt-4 border-t border-white/10">
-                    <p className="text-xs text-white/35 font-medium">{service.detail}</p>
-                    <ArrowRight className="w-4 h-4 text-blue-400 opacity-0 group-hover:opacity-100 transition-opacity duration-200 shrink-0" />
-                  </div>
+                  <p className="text-white/45 text-sm leading-snug">{service.detail}</p>
                 </div>
-              </div>
-            </Link>
-          ))}
+              </Link>
+            ))}
+          </div>
         </div>
       </div>
     </section>

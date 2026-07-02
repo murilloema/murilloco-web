@@ -75,7 +75,7 @@ export default function Navbar() {
               className={`inline-flex items-center justify-center px-5 py-2.5 text-sm font-semibold rounded-xl hover:scale-105 active:scale-95 transition-all duration-200 ${
                 scrolled
                   ? "bg-primary text-white hover:opacity-90"
-                  : "bg-blue-600 text-white hover:bg-blue-500 shadow-lg shadow-blue-600/30"
+                  : "bg-[#E9A94D] text-[#1A1206] hover:bg-[#F4BC5F] shadow-lg shadow-[#E9A94D]/30"
               }`}
             >
               Solicitar demo

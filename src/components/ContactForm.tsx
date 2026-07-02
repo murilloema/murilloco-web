@@ -5,7 +5,7 @@ import { useForm, ValidationError } from "@formspree/react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { CheckCircle, Send } from "lucide-react";
+import { CheckCircle, Send, Phone, Mail, MessageCircle } from "lucide-react";
 
 type ContactMethod = "llamada" | "correo" | "whatsapp" | "";
 
@@ -32,14 +32,16 @@ export default function ContactForm() {
   }
 
   return (
-    <section id="contacto" className="py-24 md:py-32 bg-[#080D1A] relative overflow-hidden">
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[300px] bg-blue-800/20 rounded-full blur-[100px] pointer-events-none" />
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+    <section id="contacto" className="py-24 md:py-32 bg-[#080D1A]">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
           <p className="text-sm font-semibold text-blue-400 uppercase tracking-widest mb-4">Demo gratuita</p>
           <h2 className="text-3xl sm:text-5xl font-bold text-white mb-5 leading-[1.1]" style={{ fontFamily: "var(--font-heading-var)" }}>
             ¿Listo para conseguir{" "}
-            <span className="bg-gradient-to-r from-blue-400 to-blue-600 bg-clip-text text-transparent">más clientes?</span>
+            <span className="relative inline-block whitespace-nowrap">
+              <span className="absolute -inset-x-1 bottom-1 h-[0.4em] bg-blue-600/50 -rotate-1 rounded-sm" />
+              <span className="relative">más clientes?</span>
+            </span>
           </h2>
           <p className="text-white/50 text-lg max-w-xl mx-auto">
             Dejanos tus datos y te contactamos en menos de 24 horas. Sin compromiso.
@@ -57,10 +59,8 @@ export default function ContactForm() {
                 "Te mostramos oportunidades concretas",
                 "Sin tecnicismos ni letra chica",
               ].map((item) => (
-                <li key={item} className="flex items-center gap-3">
-                  <div className="w-6 h-6 rounded-full bg-blue-500/20 border border-blue-500/30 flex items-center justify-center shrink-0">
-                    <span className="text-blue-400 text-xs font-bold">✓</span>
-                  </div>
+                <li key={item} className="flex items-start gap-3">
+                  <span className="w-1.5 h-1.5 rounded-full bg-blue-400 mt-[0.45rem] shrink-0" />
                   <span className="text-white/70 text-sm">{item}</span>
                 </li>
               ))}
@@ -103,20 +103,21 @@ export default function ContactForm() {
                 <input type="hidden" name="metodo" value={contactMethod} />
                 <div className="grid grid-cols-3 gap-2">
                   {[
-                    { value: "llamada", label: "📞 Llamada" },
-                    { value: "correo", label: "✉️ Correo" },
-                    { value: "whatsapp", label: "💬 WhatsApp" },
+                    { value: "llamada", label: "Llamada", icon: Phone },
+                    { value: "correo", label: "Correo", icon: Mail },
+                    { value: "whatsapp", label: "WhatsApp", icon: MessageCircle },
                   ].map((opt) => (
                     <button
                       key={opt.value}
                       type="button"
                       onClick={() => setContactMethod(opt.value as ContactMethod)}
-                      className={`py-2.5 px-3 rounded-lg border text-sm font-medium transition-all ${
+                      className={`flex items-center justify-center gap-1.5 py-2.5 px-3 rounded-lg border text-sm font-medium transition-all ${
                         contactMethod === opt.value
                           ? "border-primary bg-primary/8 text-primary"
                           : "border-border text-muted-foreground hover:border-primary/40"
                       }`}
                     >
+                      <opt.icon className="w-4 h-4" />
                       {opt.label}
                     </button>
                   ))}
