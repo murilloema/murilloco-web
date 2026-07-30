@@ -2,10 +2,20 @@ import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 
-const services = [
+type Service = {
+  image: string;
+  imageAlt: string;
+  title: string;
+  description: string;
+  detail: string;
+  href: string;
+  imagePosition?: string;
+};
+
+const services: Service[] = [
   {
-    image: "/images/service-web.jpg",
-    imageAlt: "Diseño de página web profesional en laptop",
+    image: "/images/service-web-forge-v2.jpg",
+    imageAlt: "Página web de restaurante diseñada por Murillo Co",
     title: "Páginas Web Profesionales",
     description:
       "Tu página trabaja por ti las 24 horas. Viene equipada con todo lo que importa para conseguir más clientes — diseño profesional, rápida y lista desde el primer día.",
@@ -13,8 +23,8 @@ const services = [
     href: "/servicios/paginas-web",
   },
   {
-    image: "/images/service-google.jpg",
-    imageAlt: "Perfil de Google Business en teléfono móvil",
+    image: "/images/service-google-business.jpg",
+    imageAlt: "Perfil de Google Business optimizado con reseñas y visibilidad",
     title: "Optimización de Google Business",
     description:
       "Cuando alguien busca un negocio como el tuyo en Google, tu perfil aparece primero. Más visibilidad, más llamadas directas.",
@@ -22,8 +32,8 @@ const services = [
     href: "/servicios/google-business",
   },
   {
-    image: "/images/service-seo.jpg",
-    imageAlt: "Dashboard de analíticas y posicionamiento SEO",
+    image: "/images/service-seo-google.jpg",
+    imageAlt: "Resultado de búsqueda en Google mostrando tu negocio de primero",
     title: "Posicionamiento en Google",
     description:
       "Aparecer en Google no es suerte. Te posicionamos para que los clientes de tu zona te encuentren antes que a la competencia.",
@@ -31,8 +41,9 @@ const services = [
     href: "/servicios/seo",
   },
   {
-    image: "/images/service-fidelizacion.png",
-    imageAlt: "Tarjeta de fidelización digital con sellos acumulados",
+    image: "/images/service-fidelizacion-pass.jpg",
+    imageAlt: "Tarjeta de fidelización digital en Apple Wallet con sellos acumulados",
+    imagePosition: "object-top",
     title: "Fidelización Digital",
     description:
       "Tus clientes acumulan sellos con cada visita y reciben su recompensa automáticamente — directo en su iPhone o Android, sin apps ni tarjetas de papel.",
@@ -42,8 +53,6 @@ const services = [
 ];
 
 export default function Services() {
-  const [featured, ...rest] = services;
-
   return (
     <section id="servicios" className="py-24 md:py-32 bg-[#080D1A] border-t border-white/5">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -58,46 +67,34 @@ export default function Services() {
           </p>
         </div>
 
-        <div className="grid lg:grid-cols-5 gap-8 lg:gap-6 items-stretch">
-          {/* Servicio destacado */}
-          <Link href={featured.href} className="lg:col-span-3 group relative rounded-2xl overflow-hidden block h-[380px] lg:h-[560px]">
-            <Image
-              src={featured.image}
-              alt={featured.imageAlt}
-              fill
-              className="object-cover transition-transform duration-500 group-hover:scale-105"
-              sizes="(max-width: 1024px) 100vw, 60vw"
-              priority
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-[#080D1A] via-[#080D1A]/50 to-transparent" />
-            <div className="absolute inset-x-0 bottom-0 p-7 sm:p-9">
-              <h3 className="text-2xl sm:text-3xl font-bold text-white mb-3" style={{ fontFamily: "var(--font-heading-var)" }}>
-                {featured.title}
-              </h3>
-              <p className="text-white/70 leading-relaxed mb-5 max-w-md text-[0.95rem]">{featured.description}</p>
-              <span className="inline-flex items-center gap-2 text-sm font-semibold text-blue-400 group-hover:gap-3 transition-all duration-200">
-                {featured.detail}
-                <ArrowRight className="w-4 h-4" />
-              </span>
-            </div>
-          </Link>
-
-          {/* Resto de servicios — lista compacta */}
-          <div className="lg:col-span-2 flex flex-col divide-y divide-white/10 border-y border-white/10">
-            {rest.map((service) => (
-              <Link key={service.href} href={service.href} className="group flex items-center gap-4 py-6">
-                <div className="relative w-16 h-16 rounded-xl overflow-hidden shrink-0">
-                  <Image src={service.image} alt={service.imageAlt} fill className="object-cover" sizes="64px" />
-                </div>
-                <div className="flex-1 min-w-0">
-                  <h3 className="text-base font-bold text-white mb-1 group-hover:text-blue-400 transition-colors duration-200" style={{ fontFamily: "var(--font-heading-var)" }}>
-                    {service.title}
-                  </h3>
-                  <p className="text-white/45 text-sm leading-snug">{service.detail}</p>
-                </div>
-              </Link>
-            ))}
-          </div>
+        <div className="grid sm:grid-cols-2 gap-6">
+          {services.map((service, i) => (
+            <Link
+              key={service.href}
+              href={service.href}
+              className="group relative rounded-2xl overflow-hidden block h-[340px] lg:h-[420px]"
+            >
+              <Image
+                src={service.image}
+                alt={service.imageAlt}
+                fill
+                className={`object-cover transition-transform duration-500 group-hover:scale-105 ${service.imagePosition ?? ""}`}
+                sizes="(max-width: 640px) 100vw, 50vw"
+                priority={i === 0}
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-[#080D1A] via-[#080D1A]/55 to-transparent" />
+              <div className="absolute inset-x-0 bottom-0 p-6 sm:p-8">
+                <h3 className="text-xl sm:text-2xl font-bold text-white mb-2" style={{ fontFamily: "var(--font-heading-var)" }}>
+                  {service.title}
+                </h3>
+                <p className="text-white/70 leading-relaxed mb-4 max-w-md text-[0.95rem]">{service.description}</p>
+                <span className="inline-flex items-center gap-2 text-sm font-semibold text-blue-400 group-hover:gap-3 transition-all duration-200">
+                  {service.detail}
+                  <ArrowRight className="w-4 h-4" />
+                </span>
+              </div>
+            </Link>
+          ))}
         </div>
       </div>
     </section>

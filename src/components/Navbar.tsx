@@ -75,10 +75,10 @@ export default function Navbar() {
               className={`inline-flex items-center justify-center px-5 py-2.5 text-sm font-semibold rounded-xl hover:scale-105 active:scale-95 transition-all duration-200 ${
                 scrolled
                   ? "bg-primary text-white hover:opacity-90"
-                  : "bg-[#E9A94D] text-[#1A1206] hover:bg-[#F4BC5F] shadow-lg shadow-[#E9A94D]/30"
+                  : "bg-[#3E6FD9] text-white hover:bg-[#5584E8] shadow-lg shadow-[#3E6FD9]/40"
               }`}
             >
-              Solicitar demo
+              Solicita tu página web
             </a>
           </div>
 
@@ -117,7 +117,7 @@ export default function Navbar() {
                 onClick={() => setOpen(false)}
                 className="inline-flex w-full items-center justify-center px-4 py-3.5 bg-primary text-white font-semibold rounded-xl hover:opacity-90 active:scale-95 transition-all duration-200"
               >
-                Solicitar demo gratuita
+                Solicita tu página web
               </a>
             </div>
           </div>

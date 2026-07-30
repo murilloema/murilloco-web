@@ -1,5 +1,10 @@
 import type { Metadata } from "next";
-import { Plus_Jakarta_Sans, DM_Sans } from "next/font/google";
+import {
+  Plus_Jakarta_Sans,
+  DM_Sans,
+  Space_Grotesk,
+  Newsreader,
+} from "next/font/google";
 import "./globals.css";
 import WhatsAppButton from "@/components/WhatsAppButton";
 
@@ -10,10 +15,26 @@ const jakartaSans = Plus_Jakarta_Sans({
   display: "swap",
 });
 
+const spaceGrotesk = Space_Grotesk({
+  variable: "--font-display",
+  subsets: ["latin"],
+  weight: ["500", "700"],
+  display: "swap",
+});
+
 const dmSans = DM_Sans({
   variable: "--font-body",
   subsets: ["latin"],
   weight: ["400", "500", "600"],
+  display: "swap",
+});
+
+// Serif editorial: solo para el párrafo del hero, como contrapeso al
+// grotesque geométrico del titular.
+const newsreader = Newsreader({
+  variable: "--font-serif",
+  subsets: ["latin"],
+  weight: ["300", "400"],
   display: "swap",
 });
 
@@ -41,10 +62,13 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="es">
-      <body
-        className={`${jakartaSans.variable} ${dmSans.variable} antialiased`}
-      >
+    // Las variables van en <html>: globals.css aplica `font-sans` sobre html y
+    // si las declara <body> la variable aún no existe y el navegador cae a Times.
+    <html
+      lang="es"
+      className={`${jakartaSans.variable} ${dmSans.variable} ${spaceGrotesk.variable} ${newsreader.variable}`}
+    >
+      <body className="antialiased">
         {children}
         <WhatsAppButton />
       </body>
