@@ -100,7 +100,7 @@ export default function FidelizacionPage() {
 
             <a
               href="/#contacto"
-              className="inline-flex items-center gap-2 px-8 py-4 bg-purple-700 hover:bg-purple-600 text-white font-bold rounded-2xl text-lg shadow-xl shadow-purple-700/25 hover:scale-105 active:scale-95 transition-all duration-200"
+              className="inline-flex items-center gap-2 px-8 py-4 bg-purple-700 hover:bg-purple-600 text-white font-bold rounded-2xl text-lg shadow-xl shadow-purple-700/25 hover:scale-[1.02] active:scale-95 transition-[transform,background-color,border-color,color,box-shadow,opacity] ease-out duration-200"
             >
               Quiero mi demo gratuita
               <ArrowRight className="h-5 w-5" />
@@ -114,7 +114,7 @@ export default function FidelizacionPage() {
             <div className="relative w-full aspect-video bg-gray-900 rounded-3xl overflow-hidden flex items-center justify-center shadow-2xl shadow-purple-900/20">
               <div className="absolute inset-0 bg-gradient-to-br from-purple-900/60 to-gray-900" />
               <div className="relative flex flex-col items-center gap-5">
-                <button className="w-20 h-20 rounded-full bg-white/10 border border-white/20 backdrop-blur-sm flex items-center justify-center hover:bg-white/20 transition-all duration-200 hover:scale-110">
+                <button className="w-20 h-20 rounded-full bg-white/10 border border-white/20 backdrop-blur-sm flex items-center justify-center hover:bg-white/20 transition-[transform,background-color,border-color,color,box-shadow,opacity] ease-out duration-200 hover:scale-110">
                   <Play className="w-8 h-8 text-white fill-white ml-1" />
                 </button>
                 <p className="text-white/50 text-sm font-medium">Video próximamente</p>
@@ -457,7 +457,7 @@ export default function FidelizacionPage() {
               ].map((item) => (
                 <div
                   key={item.label}
-                  className="bg-white border border-purple-100 hover:border-purple-300 rounded-2xl px-4 py-5 flex flex-col items-center gap-2 transition-all duration-200 hover:shadow-md"
+                  className="bg-white border border-purple-100 hover:border-purple-300 rounded-2xl px-4 py-5 flex flex-col items-center gap-2 transition-[transform,background-color,border-color,color,box-shadow,opacity] ease-out duration-200 hover:shadow-md"
                 >
                   <span className="text-3xl">{item.emoji}</span>
                   <span className="text-sm font-semibold text-gray-700">{item.label}</span>
@@ -485,7 +485,7 @@ export default function FidelizacionPage() {
               {features.map((f) => (
                 <div
                   key={f.title}
-                  className="bg-white border border-purple-100 hover:border-purple-300 rounded-2xl p-7 transition-all duration-300 shadow-sm hover:shadow-md"
+                  className="bg-white border border-purple-100 hover:border-purple-300 rounded-2xl p-7 transition-[transform,background-color,border-color,color,box-shadow,opacity] ease-out duration-300 shadow-sm hover:shadow-md"
                 >
                   <div className="w-12 h-12 rounded-xl bg-purple-100 flex items-center justify-center mb-5">
                     <f.icon className="w-5 h-5 text-purple-600" />
@@ -533,7 +533,7 @@ export default function FidelizacionPage() {
 
             <a
               href="/#contacto"
-              className="inline-flex items-center gap-2 px-7 py-3.5 border border-purple-200 bg-white hover:bg-purple-50 text-purple-700 font-semibold rounded-xl text-base transition-all duration-200 hover:scale-105"
+              className="inline-flex items-center gap-2 px-7 py-3.5 border border-purple-200 bg-white hover:bg-purple-50 text-purple-700 font-semibold rounded-xl text-base transition-[transform,background-color,border-color,color,box-shadow,opacity] ease-out duration-200 hover:scale-[1.02]"
             >
               Quiero ser de los primeros
               <ArrowRight className="h-4 w-4" />
@@ -601,7 +601,7 @@ export default function FidelizacionPage() {
                 </p>
                 <a
                   href="/#contacto"
-                  className="inline-flex items-center gap-2 px-8 py-4 bg-white hover:bg-purple-50 text-purple-700 font-bold rounded-2xl text-lg hover:scale-105 active:scale-95 transition-all duration-200 shadow-xl"
+                  className="inline-flex items-center gap-2 px-8 py-4 bg-white hover:bg-purple-50 text-purple-700 font-bold rounded-2xl text-lg hover:scale-[1.02] active:scale-95 transition-[transform,background-color,border-color,color,box-shadow,opacity] ease-out duration-200 shadow-xl"
                 >
                   Quiero mi demo gratuita
                   <ArrowRight className="h-5 w-5" />

@@ -88,7 +88,7 @@ export default function Services() {
                   {service.title}
                 </h3>
                 <p className="text-white/70 leading-relaxed mb-4 max-w-md text-[0.95rem]">{service.description}</p>
-                <span className="inline-flex items-center gap-2 text-sm font-semibold text-blue-400 group-hover:gap-3 transition-all duration-200">
+                <span className="inline-flex items-center gap-2 text-sm font-semibold text-blue-400 group-hover:gap-3 transition-[transform,background-color,border-color,color,box-shadow,opacity] ease-out duration-200">
                   {service.detail}
                   <ArrowRight className="w-4 h-4" />
                 </span>

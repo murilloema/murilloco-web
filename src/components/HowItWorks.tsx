@@ -33,7 +33,7 @@ export default function HowItWorks() {
             </p>
             <a
               href="#contacto"
-              className="inline-flex items-center justify-center gap-2 px-7 py-3.5 bg-primary text-white font-semibold rounded-xl text-base hover:opacity-90 hover:scale-105 hover:shadow-lg active:scale-95 transition-all duration-200"
+              className="inline-flex items-center justify-center gap-2 px-7 py-3.5 bg-primary text-white font-semibold rounded-xl text-base hover:opacity-90 hover:scale-[1.02] hover:shadow-lg active:scale-95 transition-[transform,background-color,border-color,color,box-shadow,opacity] ease-out duration-200"
             >
               Empezar ahora
               <ArrowRight className="h-4 w-4" />
@@ -46,7 +46,7 @@ export default function HowItWorks() {
                 className="flex gap-6 group"
               >
                 <div className="flex flex-col items-center">
-                  <div className="relative w-14 h-14 rounded-2xl border-2 border-primary/20 bg-primary/5 group-hover:bg-primary group-hover:border-primary flex items-center justify-center shrink-0 transition-all duration-300">
+                  <div className="relative w-14 h-14 rounded-2xl border-2 border-primary/20 bg-primary/5 group-hover:bg-primary group-hover:border-primary flex items-center justify-center shrink-0 transition-[transform,background-color,border-color,color,box-shadow,opacity] ease-out duration-300">
                     <span className="text-sm font-bold text-primary group-hover:text-white transition-colors duration-300" style={{ fontFamily: "var(--font-heading-var)" }}>
                       {step.number}
                     </span>

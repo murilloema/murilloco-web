@@ -111,7 +111,7 @@ export default function ContactForm() {
                       key={opt.value}
                       type="button"
                       onClick={() => setContactMethod(opt.value as ContactMethod)}
-                      className={`flex items-center justify-center gap-1.5 py-2.5 px-3 rounded-lg border text-sm font-medium transition-all ${
+                      className={`flex items-center justify-center gap-1.5 py-2.5 px-3 rounded-lg border text-sm font-medium transition-[transform,background-color,border-color,color,box-shadow,opacity] ease-out ${
                         contactMethod === opt.value
                           ? "border-primary bg-primary/8 text-primary"
                           : "border-border text-muted-foreground hover:border-primary/40"

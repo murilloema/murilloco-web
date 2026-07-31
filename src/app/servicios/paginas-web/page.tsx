@@ -103,7 +103,7 @@ export default function PaginasWebPage() {
 
             <a
               href="/#contacto"
-              className="inline-flex items-center gap-2 px-8 py-4 bg-blue-600 hover:bg-blue-500 text-white font-bold rounded-2xl text-lg shadow-xl shadow-blue-600/25 hover:scale-105 active:scale-95 transition-all duration-200"
+              className="inline-flex items-center gap-2 px-8 py-4 bg-blue-600 hover:bg-blue-500 text-white font-bold rounded-2xl text-lg shadow-xl shadow-blue-600/25 hover:scale-[1.02] active:scale-95 transition-[transform,background-color,border-color,color,box-shadow,opacity] ease-out duration-200"
             >
               Solicitar demo gratuita
               <ArrowRight className="h-5 w-5" />
@@ -202,7 +202,7 @@ export default function PaginasWebPage() {
               {features.map((f) => (
                 <div
                   key={f.title}
-                  className="bg-white/5 border border-white/10 hover:border-blue-500/30 rounded-2xl p-7 transition-all duration-300 hover:bg-white/8"
+                  className="bg-white/5 border border-white/10 hover:border-blue-500/30 rounded-2xl p-7 transition-[transform,background-color,border-color,color,box-shadow,opacity] ease-out duration-300 hover:bg-white/8"
                 >
                   <div className="w-12 h-12 rounded-xl bg-blue-500/15 flex items-center justify-center mb-5">
                     <f.icon className="w-5 h-5 text-blue-400" />
@@ -244,7 +244,7 @@ export default function PaginasWebPage() {
                   </p>
                   <a
                     href="/#contacto"
-                    className="inline-flex items-center gap-2 px-6 py-3.5 bg-blue-600 hover:bg-blue-500 text-white font-semibold rounded-xl text-base hover:scale-105 active:scale-95 transition-all duration-200"
+                    className="inline-flex items-center gap-2 px-6 py-3.5 bg-blue-600 hover:bg-blue-500 text-white font-semibold rounded-xl text-base hover:scale-[1.02] active:scale-95 transition-[transform,background-color,border-color,color,box-shadow,opacity] ease-out duration-200"
                   >
                     Solicitar demo gratuita
                     <ArrowRight className="h-4 w-4" />
@@ -272,7 +272,7 @@ export default function PaginasWebPage() {
                 </p>
                 <a
                   href="/#contacto"
-                  className="inline-flex items-center gap-2 px-8 py-4 bg-white hover:bg-blue-50 text-blue-700 font-bold rounded-2xl text-lg hover:scale-105 active:scale-95 transition-all duration-200 shadow-xl"
+                  className="inline-flex items-center gap-2 px-8 py-4 bg-white hover:bg-blue-50 text-blue-700 font-bold rounded-2xl text-lg hover:scale-[1.02] active:scale-95 transition-[transform,background-color,border-color,color,box-shadow,opacity] ease-out duration-200 shadow-xl"
                 >
                   Solicitar demo gratuita
                   <ArrowRight className="h-5 w-5" />

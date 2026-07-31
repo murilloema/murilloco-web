@@ -105,7 +105,7 @@ export default function Testimonials() {
                 aria-selected={i === index}
                 aria-label={`Testimonio de ${testimonial.name}`}
                 onClick={() => { setDirection(i > index ? 1 : -1); setIndex(i); }}
-                className={`h-1.5 rounded-full transition-all duration-300 ${i === index ? "w-6 bg-blue-500" : "w-1.5 bg-white/20"}`}
+                className={`h-1.5 rounded-full transition-[transform,background-color,border-color,color,box-shadow,opacity] ease-out duration-300 ${i === index ? "w-6 bg-blue-500" : "w-1.5 bg-white/20"}`}
               />
             ))}
           </div>

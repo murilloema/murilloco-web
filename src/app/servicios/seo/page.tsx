@@ -102,7 +102,7 @@ export default function SeoPage() {
 
             <a
               href="/#contacto"
-              className="inline-flex items-center gap-2 px-8 py-4 bg-amber-500 hover:bg-amber-400 text-gray-900 font-bold rounded-2xl text-lg shadow-xl shadow-amber-500/25 hover:scale-105 active:scale-95 transition-all duration-200"
+              className="inline-flex items-center gap-2 px-8 py-4 bg-amber-500 hover:bg-amber-400 text-gray-900 font-bold rounded-2xl text-lg shadow-xl shadow-amber-500/25 hover:scale-[1.02] active:scale-95 transition-[transform,background-color,border-color,color,box-shadow,opacity] ease-out duration-200"
             >
               Solicitar demo gratuita
               <ArrowRight className="h-5 w-5" />
@@ -201,7 +201,7 @@ export default function SeoPage() {
               {features.map((f) => (
                 <div
                   key={f.title}
-                  className="bg-white/5 border border-white/10 hover:border-amber-500/30 rounded-2xl p-7 transition-all duration-300 hover:bg-white/8"
+                  className="bg-white/5 border border-white/10 hover:border-amber-500/30 rounded-2xl p-7 transition-[transform,background-color,border-color,color,box-shadow,opacity] ease-out duration-300 hover:bg-white/8"
                 >
                   <div className="w-12 h-12 rounded-xl bg-amber-500/15 flex items-center justify-center mb-5">
                     <f.icon className="w-5 h-5 text-amber-400" />
@@ -242,7 +242,7 @@ export default function SeoPage() {
                   </p>
                   <a
                     href="/#contacto"
-                    className="inline-flex items-center gap-2 px-6 py-3.5 bg-amber-500 hover:bg-amber-400 text-gray-900 font-semibold rounded-xl text-base hover:scale-105 active:scale-95 transition-all duration-200"
+                    className="inline-flex items-center gap-2 px-6 py-3.5 bg-amber-500 hover:bg-amber-400 text-gray-900 font-semibold rounded-xl text-base hover:scale-[1.02] active:scale-95 transition-[transform,background-color,border-color,color,box-shadow,opacity] ease-out duration-200"
                   >
                     Solicitar demo gratuita
                     <ArrowRight className="h-4 w-4" />
@@ -270,7 +270,7 @@ export default function SeoPage() {
                 </p>
                 <a
                   href="/#contacto"
-                  className="inline-flex items-center gap-2 px-8 py-4 bg-gray-900 hover:bg-gray-800 text-white font-bold rounded-2xl text-lg hover:scale-105 active:scale-95 transition-all duration-200 shadow-xl"
+                  className="inline-flex items-center gap-2 px-8 py-4 bg-gray-900 hover:bg-gray-800 text-white font-bold rounded-2xl text-lg hover:scale-[1.02] active:scale-95 transition-[transform,background-color,border-color,color,box-shadow,opacity] ease-out duration-200 shadow-xl"
                 >
                   Solicitar demo gratuita
                   <ArrowRight className="h-5 w-5" />

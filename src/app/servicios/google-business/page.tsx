@@ -101,7 +101,7 @@ export default function GoogleBusinessPage() {
 
             <a
               href="/#contacto"
-              className="inline-flex items-center gap-2 px-8 py-4 bg-green-600 hover:bg-green-500 text-white font-bold rounded-2xl text-lg shadow-xl shadow-green-600/25 hover:scale-105 active:scale-95 transition-all duration-200"
+              className="inline-flex items-center gap-2 px-8 py-4 bg-green-600 hover:bg-green-500 text-white font-bold rounded-2xl text-lg shadow-xl shadow-green-600/25 hover:scale-[1.02] active:scale-95 transition-[transform,background-color,border-color,color,box-shadow,opacity] ease-out duration-200"
             >
               Solicitar demo gratuita
               <ArrowRight className="h-5 w-5" />
@@ -200,7 +200,7 @@ export default function GoogleBusinessPage() {
               {features.map((f) => (
                 <div
                   key={f.title}
-                  className="bg-white border border-green-100 hover:border-green-300 rounded-2xl p-7 transition-all duration-300 shadow-sm hover:shadow-md"
+                  className="bg-white border border-green-100 hover:border-green-300 rounded-2xl p-7 transition-[transform,background-color,border-color,color,box-shadow,opacity] ease-out duration-300 shadow-sm hover:shadow-md"
                 >
                   <div className="w-12 h-12 rounded-xl bg-green-100 flex items-center justify-center mb-5">
                     <f.icon className="w-5 h-5 text-green-600" />
@@ -241,7 +241,7 @@ export default function GoogleBusinessPage() {
                   </p>
                   <a
                     href="/#contacto"
-                    className="inline-flex items-center gap-2 px-6 py-3.5 bg-green-600 hover:bg-green-500 text-white font-semibold rounded-xl text-base hover:scale-105 active:scale-95 transition-all duration-200"
+                    className="inline-flex items-center gap-2 px-6 py-3.5 bg-green-600 hover:bg-green-500 text-white font-semibold rounded-xl text-base hover:scale-[1.02] active:scale-95 transition-[transform,background-color,border-color,color,box-shadow,opacity] ease-out duration-200"
                   >
                     Solicitar demo gratuita
                     <ArrowRight className="h-4 w-4" />
@@ -269,7 +269,7 @@ export default function GoogleBusinessPage() {
                 </p>
                 <a
                   href="/#contacto"
-                  className="inline-flex items-center gap-2 px-8 py-4 bg-white hover:bg-green-50 text-green-700 font-bold rounded-2xl text-lg hover:scale-105 active:scale-95 transition-all duration-200 shadow-xl"
+                  className="inline-flex items-center gap-2 px-8 py-4 bg-white hover:bg-green-50 text-green-700 font-bold rounded-2xl text-lg hover:scale-[1.02] active:scale-95 transition-[transform,background-color,border-color,color,box-shadow,opacity] ease-out duration-200 shadow-xl"
                 >
                   Solicitar demo gratuita
                   <ArrowRight className="h-5 w-5" />
